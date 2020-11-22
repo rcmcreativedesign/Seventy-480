@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        window.onload = function () {
+            var geoLocation = window.navigator.geolocation;
+            if (geoLocation) {
+                geoLocation.getCurrentPosition(alertLocation, alertError);
+            }
+            else {
+                alert("No geolocation available");
+            }
+        }
+
+        function alertLocation(e) {
+            alert("Location found: " + e.coords.latitude + ' x ' + e.coords.longitude);
+        }
+
+        function alertError(e) {
+            alert("Error encountered: " + e.message);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

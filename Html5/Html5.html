@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script>
+        window.onload = function () {
+            var canvas = document.getElementById('myCanvas');
+            var context = canvas.getContext("2d");
+
+            context.beginPath();
+            context.moveTo(250, 50);
+            context.lineTo(100, 150);
+            context.lineTo(300, 350);
+            context.lineTo(500, 150);
+            context.lineTo(350, 50);
+            context.lineTo(250, 50);
+            context.stroke();
+
+            var queueDiv = document.getElementById('queueDiv');
+            var queueDescription = queueDiv.appendChild(document.createElement('p'));
+            queueDescription.innerText = 'Unshifting (1, 2, 3, 4)';
+
+            var queue = new Array();
+            queue.unshift('1', '2', '3');
+            queue.unshift('4');
+            var count = queue.length;
+
+            for (var i = 0; i < count; i++) {
+                var div = queueDiv.appendChild(document.createElement('p'));
+                div.innerText = queue.shift();
+            }
+
+            var stackDiv = document.getElementById('stackDiv');
+            var stackDescription = stackDiv.appendChild(document.createElement('p'));
+            stackDescription.innerText = 'Pushing (1, 2, 3, 4)';
+
+            var stack = new Array();
+            stack.push('1', '2', '3');
+            stack.push('4');
+            count = stack.length;
+
+            for (var i = 0; i < count; i++) {
+                var div = stackDiv.appendChild(document.createElement('p'));
+                div.innerText = stack.pop();
+            }
+
+            var stackQueueDiv = document.getElementById('stackQueueDiv');
+            var stackQueueDescription = stackQueueDiv.appendChild(document.createElement('p'));
+            stackQueueDescription.innerText = 'Pushing (1, 2, 3, 4)';
+
+            stack.push('1', '2', '3');
+            stack.push('4');
+            count = stack.length;
+
+            for (var i = 0; i < count; i++) {
+                var div = stackQueueDiv.appendChild(document.createElement('p'));
+                div.innerText = stack.shift();
+            }
+        }
+    </script>
+
+</head>
+<body>
+
+    <div id="outerDiv">
+        <p class='mainPara'>Main Paragraph</p>
+        <ul>
+            <li>First List Item</li>
+            <li>Second List Item</li>
+            <li>Third List Item</li>
+            <li>Fourth List Item</li>
+        </ul>
+        <div id="innerDiv">
+            <p class='subPara' id='P1'>Paragraph 1</p>
+            <p class='subPara' id='P2'>Paragraph 2</p>
+            <p class='subPara' id='P3'>Paragraph 3</p>
+            <p class='subPara' id='P4'>Paragraph 4</p>
+        </div>
+        <table>
+            <tr>
+                <td>
+                    Row 1
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Row 2
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Row 3
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Row 4
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Row 5
+                </td>
+            </tr>
+        </table>
+        <input type="text" /><input type="submit" value="Submit" />
+    </div>
+    <canvas id="myCanvas" height="400" width="600"></canvas>
+    <div id="queueDiv">
+        <p>Queue</p>
+    </div>
+    <div id="stackDiv">
+        <p>Stack</p>
+    </div>
+    <div id="stackQueueDiv">
+        <p>StackQueue</p>
+    </div>
+</body>
+</html>
